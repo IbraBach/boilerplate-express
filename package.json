@@ -1,6 +1,10 @@
 {
 	"name": "fcc-learn-node-with-express",
 	"version": "0.1.0",
+	"author": "Brahim Bachir Limam",
+	"description": "My fisrt backend application",
+  	"keywords": [ "initialization", "development", "backend", "coding", "freecodecamp"],
+  	"license": "MIT",
 	"dependencies": {
 		"express": "^4.14.0",
 		"body-parser": "^1.15.2",
