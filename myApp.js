@@ -12,6 +12,13 @@ app.get("/", function (req, res) {
 });
 
 app.use("/public",express.static(staticFiles));
+app.use("/", function (req, res, next) {
+  console.log(`${req.method} /${req.path} - ${req.ip}`);
+  //console.log(req);
+  next();
+});
+
+
 
 app.get("/json", function (req, res) {
     var body = "Hello json";
