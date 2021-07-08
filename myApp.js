@@ -1,11 +1,15 @@
 var express = require('express');
 var config = require('dotenv').config();
+var bodyParser = require('body-parser');
+
 var app = express();
 
 
 
 var absolutePath = __dirname + "/views/index.html";
 var staticFiles = __dirname + "/public";
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.get("/", function (req, res) {
   res.sendFile(absolutePath);
@@ -28,6 +32,14 @@ app.get("/now", function(req, res, next){
 app.get("/:word/echo", function (req, res) {
   res.send({echo: req.params.word});
 });
+
+app.route("/name")
+  .get(function(req, res){
+    res.send({name: `${req.query.first} ${req.query.last}`})
+  })
+  .post(function (req, res){
+    res.send({name: `${req.body.first} ${req.body.last}`});
+  });
 
 app.get("/json", function (req, res) {
     var body = "Hello json";
