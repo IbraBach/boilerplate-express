@@ -25,11 +25,15 @@ app.get("/now", function(req, res, next){
   res.send({time: req.time});
 });
 
+app.get("/:word/echo", function (req, res) {
+  res.send({echo: req.params.word});
+});
+
 app.get("/json", function (req, res) {
     var body = "Hello json";
 
     if (process.env.MESSAGE_STYLE === "uppercase"){
-        body = "HELLO JSON";
+      body = "HELLO JSON";
     }
 
     res.json({
